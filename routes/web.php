@@ -37,6 +37,10 @@ Route::get('resultados/{id}','BusquedaController@resultadoSer')->name('resultado
 Route::get('resultadoe/{id}','BusquedaController@resultadoEdi')->name('resultadoEdi');
 
 
+Route::get('resultado','BusquedaController@resultado')->name('resultado');
+
+
+
 Auth::routes();
 
 

@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 @foreach($edificios as $edificio)
 <a href="{{ route('resultadoEdi', $edificio->id)}}">
     <div class="row no-gutters  position-center">
@@ -11,7 +10,7 @@
             <p class="text-secondary textsec">{{$edificio->descE}}</p>
         </div>
         <div class="col-md-0 mb-md-0 p-md-0">
-           <img src="salonQ.jpg" class=" float-right" alt="..." width="100" height="100">
+           <img src="/salonQ.jpg" class=" float-right" alt="..." width="100" height="100">
        </div>
    </div>
 </a>
@@ -43,43 +42,29 @@
 <hr>
 @endforeach
 
-<a href="#">
+@foreach($infrae as $inf)
+<a href="{{ route('resultadoEdi', $inf->id)}}">
     <div class="row no-gutters  position-center">
         <div class="col-md-8 position-static ">
-            <p class="text-dark textp">Q</p>
-            <p  class="text-secondary textsec">Edificio de salones de la carrera de Química, con laboratorio multimedia</p>
+            <p class="text-dark textp">{{$inf->nombre}}</p>
+            <p class="text-secondary textsec">{{$inf->descE}}</p>
         </div>
         <div class="col-md-0 mb-md-0 p-md-0">
-           <img src="salonQ.jpg" class=" float-right" alt="..." width="100" height="100">
+           <img src="/salonQ.jpg" class=" float-right" alt="..." width="100" height="100">
        </div>
    </div>
 </a>
 <hr>
 
-<a href="#">
-    <div class="row no-gutters  position-center">
-        <div class="col-md-8 position-static ">
-            <p class="text-dark textp">T</p>
-            <p  class="text-secondary textsec">Edificio de salones de la carrera de Sistemas y Tics, con laboratorios de redes y multimedia</p>
-        </div>
-        <div class="col-md-0 mb-md-0 p-md-0">
-           <img src="edificioT.jpg" class=" float-right" alt="..." width="100" height="100">
-       </div>
-   </div>
-</a>
-<hr>
+@endforeach
 
-<a href="#">
-    <div class="row no-gutters  position-center">
-        <div class="col-md-8 position-static ">
-            <p class="text-dark textp">U</p>
-            <p  class="text-secondary textsec">Edificio de salones de la carrera de Gestión empresarial</p>
-        </div>
-        <div class="col-md-0 mb-md-0 p-md-0">
-           <img src="edificioU.jpg" class=" float-right" alt="..." width="100" height="100">
-       </div>
-   </div>
+@endsection
+
+@section('puntero')
+@foreach($infrae as $inf)
+<a href="{{ route('resultadoEdi', $inf->idEdi)}}">
+<img style="position:absolute; left:{{$inf->latitud}}px; top:{{$inf->longitud}}px; z-index:1;" height="35" SRC="icono.png" title="{{$inf->nombreI}}" width="35">
 </a>
-<hr>
+@endforeach
 
 @endsection

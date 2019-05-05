@@ -8,6 +8,7 @@ use App\DetEvento;
 use App\Edificio;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 class EventoController extends Controller
 {
@@ -21,6 +22,7 @@ class EventoController extends Controller
         $eventos =DB::table('eventos')
         ->where('eliminado',0)
         ->get(); 
+        
         $edificios = Edificio::all();
 
         return view('admin.eventos' , compact('eventos','edificios','edieventos'));
@@ -86,6 +88,14 @@ class EventoController extends Controller
      */
     public function show($id)
     {
+         $evento = Evento::find($id);
+         $edificios= DB::table('edificios')
+        ->join('det_eventos', 'edificios.id', '=', 'det_eventos.idEdi')
+        ->where('det_eventos.idEvento',$id)
+        ->select('edificios.*')
+        ->get(); 
+
+        return view('busquedaEvento',compact('evento','edificios'));
 
     }
 

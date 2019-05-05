@@ -25,6 +25,7 @@ class CreateServiciosTable extends Migration
             $table->unsignedBigInteger('idEdi');
             $table->foreign('idEdi')->references('id')->on('edificios')->onDelete('cascade');
             $table->integer('eliminado');
+            $table->string('etiquetas');
             $table->timestamps();
         });
     }

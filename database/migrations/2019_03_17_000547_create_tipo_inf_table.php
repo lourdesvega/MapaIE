@@ -17,6 +17,7 @@ class CreateTipoInfTable extends Migration
             $table->bigIncrements('id');
             $table->string('rutaIcon');
             $table->string('nombreI');
+            $table->string('etiquetas');
             $table->timestamps();
         });
     }

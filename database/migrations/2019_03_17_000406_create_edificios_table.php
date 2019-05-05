@@ -19,6 +19,7 @@ class CreateEdificiosTable extends Migration
             $table->string('descE');
             $table->double('latitud');
             $table->double('longitud');
+            $table->string('etiquetas');
             $table->timestamps();
         });
     }
