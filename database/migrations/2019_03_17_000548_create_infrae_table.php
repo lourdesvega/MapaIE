@@ -19,7 +19,7 @@ class CreateInfraeTable extends Migration
             $table->foreign('idEdi')->references('id')->on('edificios')->onDelete('cascade');;
             $table->unsignedBigInteger('idTipoI');
             $table->foreign('idTipoI')->references('id')->on('tipo_inf')->onDelete('cascade');;
-            $table->string('descI');
+            //($table->string('descI');
             $table->timestamps();
         });
     }

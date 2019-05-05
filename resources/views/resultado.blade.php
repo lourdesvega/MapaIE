@@ -6,23 +6,23 @@
 
 Edificio de salones de la carrera de Sistemas y Tics, con laboratorios de redes y multimedia
 <a href="#modalImg"  data-toggle="modal">
-	<img height="20%" SRC="edificioT.jpg"  width="30%">
+	<img height="20%" SRC="/edificioT.jpg"  width="30%">
 </a>
 <hr>
 <h3>Infraestructura</h3>
-<img height="5%" SRC="sanitarios.jpg"  width="10%"> Baños
+<img height="5%" SRC="/sanitarios.jpg"  width="10%"> Baños
 <br>
 <br>
-<img height="5%" SRC="centroc.png"  width="10%"> Laboratorios de Redes y multimedia
+<img height="5%" SRC="/centroc.png"  width="10%"> Laboratorios de Redes y multimedia
 <br>
 <br>
-<img height="5%" SRC="cubiculos.jpg"  width="10%"> Cubiculos de profesores
+<img height="5%" SRC="/cubiculos.jpg"  width="10%"> Cubiculos de profesores
 @endsection
 
 
 
 @section('puntero')
-<img style="position:absolute; left:640px; top:325px; z-index:1;" height="35" SRC="icono.png" width="35">
+<img style="position:absolute; left:640px; top:325px; z-index:1;" height="35" SRC="/icono.png" width="35">
 
 
 @endsection

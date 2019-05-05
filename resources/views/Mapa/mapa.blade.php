@@ -7,4 +7,4 @@ top:10px;
 }
 
 </style>
-<img class="img1" src="MapaITT.jpg"  alt="..." width="800" height="600">
+<img class="img1" src="/MapaITT.jpg"  alt="..." width="800" height="600">
