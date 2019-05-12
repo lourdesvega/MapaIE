@@ -11,5 +11,5 @@ class Edificio extends Model
 	protected $primaryKey='id';	
 
 	protected $fillable=['nombre',
-	'descE','latitud','longitud','etiquetas'];
+	'descE','latitud','longitud','etiquetas','foto'];
 }
