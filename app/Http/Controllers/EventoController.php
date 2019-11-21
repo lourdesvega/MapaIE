@@ -94,6 +94,7 @@ class EventoController extends Controller
         ->where('det_eventos.idEvento',$id)
         ->select('edificios.*')
         ->get(); 
+       // $evento-> DATE_FORMAT(Fecha_Nacimiento, "%d/%m/%Y"
 
         return view('busquedaEvento',compact('evento','edificios'));
 

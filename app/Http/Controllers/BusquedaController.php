@@ -14,6 +14,8 @@ class BusquedaController extends Controller
     return view('busquedas');
   }
 
+
+
   public function rbusquedas(Request $request){
 
 
@@ -45,15 +47,15 @@ class BusquedaController extends Controller
 
     }
 
-    public function search(){ 
+    public function search(){
      $eventos=DB::table('eventos')
      ->where( 'fechaI', '>=', Carbon::now())
-     ->where('fechaF', '>=', Carbon::now())
+     ->Orwhere('fechaF', '>=', Carbon::now())
      ->where('eliminado',0)
      ->get();
 
      return view ('busqueda',compact('eventos'));
-     
+
 
    }
 
@@ -82,8 +84,29 @@ class BusquedaController extends Controller
 
 
     return view('resultado');
-    
+
   }
+
+    public function autocomplete1(Request $request)
+    {
+        $clients = Edificio::where('nombre',
+            'like',
+            '%' . $request->get('query') . '%'
+        )->get();
+
+        $data = array();
+        foreach ($clients as $client) {
+            array_push($data,
+                ['value' =>
+                    $client->nombre ,
+                    'data' => $client->id . ""]);
+        }
+
+        return response()->json([
+            "query" => "Unit",
+            "suggestions" => $data,
+        ]);
+    }
 
 
   public function resultadoSer($id){

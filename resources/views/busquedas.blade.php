@@ -30,7 +30,7 @@
            <br><br>
            <b>Hora de atención:</b> {{$servicio->horaI}} - {{$servicio->horaF}}
            <br><br>
-           <b>Télefono:</b> {{$servicio->telefono}}
+           <b>Contacto:</b> {{$servicio->telefono}}
            <br><br>
            <b>Planta:</b> {{$servicio->planta}}</p>
         </div>

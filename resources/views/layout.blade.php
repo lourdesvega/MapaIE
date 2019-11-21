@@ -8,6 +8,12 @@
 
     <title>Mapa Interactivo E.</title>
 
+    <style>
+        .ui-draggable, .ui-droppable {
+            background-position: top;
+            background-color: white;
+        }
+    </style>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -16,13 +22,18 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.themes.min.css">
+
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 
 
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link rel="stylesheet" href="/galeria/gallery-clean.css">
 
@@ -43,51 +54,53 @@
 
     <div class="wrapper">
         <!-- Sidebar  -->
+
         <nav id="sidebar">
+          <div class="content">
             <div class="sidebar-header">
                 <form action="{{ route('rbusquedas')}}" method="post">
-                        @csrf
-                <div class="input-group" >
+                    @csrf
+                    <div class="input-group" >
 
-                    
+
                         <input type="text" class="form-control" id="buscar" placeholder="Buscar" name="buscar">
-
-                        <button type="submit" class="btn btn-link">
+                       <button type="submit" class="btn btn-link">
                             <ion-icon name="search"></ion-icon>
                         </button>
-                   
-                </div>  
- </form>
+
+                    </div>
+                </form>
 
 
             </div>
-<div class="container">
-  <!-- Content here -->
+        </div>
+        <div class="container">
+          <!-- Content here -->
 
 
-            <ul class="list-unstyled components">
-                <li>
+          <ul class="list-unstyled components">
+            <li>
 
-                    @yield('content')
-                </li>
-            </ul>
-            </div>
+                @yield('content')
+            </li>
+        </ul>
+    </div>
 
-        </nav>
+</nav>
 
 
-        <!-- Page Content  -->
-        <div id="content">
-         <button type="button" id="sidebarCollapse" class="btn btn-info">
-            <i class="fas fa-align-left"></i>
-            <span></span>
-        </button>
+<!-- Page Content  -->
+<div id="content">
+   <button type="button" id="sidebarCollapse" class="btn btn-info">
+    <i class="fas fa-align-left"></i>
+    <span></span>
+</button>
 
  <!---        <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
                 <div class="container-fluid">
 
-                    
+
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
@@ -112,7 +125,7 @@
             </nav>-->
 
             @include('Mapa.mapa')
-            @yield('puntero') 
+            @yield('puntero')
 
         </div>
 
@@ -162,6 +175,8 @@
             });
         </script>
 
+        <script src="{{ asset('/js/jquery.autocomplete.min.js') }}"></script>
+        <script src="{{ asset('/js/index.js') }}"></script>
 
-    </body>
+</body>
     </html>
