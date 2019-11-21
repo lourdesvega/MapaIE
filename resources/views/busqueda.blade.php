@@ -14,7 +14,7 @@
 @if($evento->fechaI == $evento->fechaF)
 <b>Fecha: </b>{{$evento->fechaI}}
 @else
-<b>Fecha: </b>{{$evento->fechaI}}-{{$evento->fechaF}}
+<b>Fecha: </b>{{$evento->fechaI}} al {{$evento->fechaF}}
 @endif
 
 <hr>

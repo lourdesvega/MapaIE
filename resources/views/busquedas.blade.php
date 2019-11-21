@@ -10,7 +10,7 @@
             <p class="text-secondary textsec">{{$edificio->descE}}</p>
         </div>
         <div class="col-md-0 mb-md-0 p-md-0">
-           <img src="/salonQ.jpg" class=" float-right" alt="..." width="100" height="100">
+           <img src="{{$edificio->foto}}" class=" float-right" alt="..." width="100" height="100">
        </div>
    </div>
 </a>
@@ -30,32 +30,16 @@
            <br><br>
            <b>Hora de atención:</b> {{$servicio->horaI}} - {{$servicio->horaF}}
            <br><br>
-           <b>Télefono:</b> {{$servicio->telefono}}
+           <b>Contacto:</b> {{$servicio->telefono}}
            <br><br>
            <b>Planta:</b> {{$servicio->planta}}</p>
         </div>
         <div class="col-md-0 mb-md-0 p-md-0">
-           <img src="salonQ.jpg" class=" float-right" alt="..." width="100" height="100">
+           <img src="{{$servicio->foto}}" class=" float-right" alt="..." width="100" height="100">
        </div>
    </div>
 </a>
 <hr>
-@endforeach
-
-@foreach($infrae as $inf)
-<a href="{{ route('resultadoEdi', $inf->id)}}">
-    <div class="row no-gutters  position-center">
-        <div class="col-md-8 position-static ">
-            <p class="text-dark textp">{{$inf->nombre}}</p>
-            <p class="text-secondary textsec">{{$inf->descE}}</p>
-        </div>
-        <div class="col-md-0 mb-md-0 p-md-0">
-           <img src="/salonQ.jpg" class=" float-right" alt="..." width="100" height="100">
-       </div>
-   </div>
-</a>
-<hr>
-
 @endforeach
 
 @endsection

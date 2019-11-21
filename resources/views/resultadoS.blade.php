@@ -15,7 +15,7 @@
            <br><br>
            <b>Hora de atención:</b> {{$servicio->horaI}} - {{$servicio->horaF}}
            <br><br>
-           <b>Télefono:</b> {{$servicio->telefono}}
+           <b>Contacto:</b> {{$servicio->telefono}}
            <br><br>
            <b>Planta:</b> {{$servicio->planta}}
            <br><br>
@@ -48,6 +48,8 @@
 <script>
 	baguetteBox.run('.tz-gallery');
 </script>
+
+<a href="/busqueda" class="btn btn-success  btn-sm" role="button" >Volver a eventos</a>
 <hr>
 @endsection
 

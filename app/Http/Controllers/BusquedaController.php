@@ -11,28 +11,13 @@ use Carbon\Carbon;
 class BusquedaController extends Controller
 {
 	public function busquedas(){
-        return view('busquedas');
-    }
+    return view('busquedas');
+  }
 
-    public function rbusquedas(Request $request){
-        /*
-        $request->validate([
-        'name' => 'required',
-        'email' => 'required',
-        'password' => 'required',
-        'estatus'=>'required',
-    ]);
 
-    $user = User::find($id);
-    //dd($user);
-      $user->name = $request->get('name');
-      $user->email = $request->get('email');
-      $user->password = $request->get('password');
-      $user->estatus = $request->get('estatus');
-      $user->save();
 
-        */
-    
+  public function rbusquedas(Request $request){
+
 
 
       $edificios = Edificio::where('etiquetas', 'LIKE', '%'.$request->get('buscar').'%')
@@ -40,15 +25,15 @@ class BusquedaController extends Controller
 
 
 
-  if($request->get('buscar')=='servicio' || $request->get('buscar')=='servicios'){
-    $servicios = Servicio::all();
-}
-else{
 
-  $servicios = Servicio::where('descS', 'LIKE', '%'.$request->get('buscar').'%')
-  ->orWhere('nomServicio', 'LIKE', '%'.$request->get('buscar').'%')
-  ->get();
-}
+
+      $servicios = DB::table('servicios')
+      ->join('edificios','edificios.id','servicios.idEdi')
+      ->where('descS', 'LIKE', '%'.$request->get('buscar').'%')
+      ->orWhere('nomServicio', 'LIKE', '%'.$request->get('buscar').'%')
+      ->select('edificios.foto','servicios.*')
+      ->get();
+
 
       $infrae = DB::table('tipo_inf')
       ->join('infrae','infrae.idTipoI','tipo_inf.id')
@@ -56,44 +41,31 @@ else{
       ->where('tipo_inf.etiquetasI','LIKE', '%'.$request->get('buscar').'%')
       ->get();
 
-return view('busquedas', compact('edificios','servicios','infrae'));
+      return view('busquedas', compact('edificios','servicios','infrae'));
 //}
 
 
-}
+    }
 
-public function search(){ 
-   $eventos=DB::table('eventos')
-          ->where( 'fechaI', '>=', Carbon::now())
-          ->where('fechaF', '>=', Carbon::now())
-           ->where('eliminado',0)
-           ->get();
-           //dd($evento);
+    public function search(){
+     $eventos=DB::table('eventos')
+     ->where( 'fechaI', '>=', Carbon::now())
+     ->Orwhere('fechaF', '>=', Carbon::now())
+     ->where('eliminado',0)
+     ->get();
 
-//foreach ($variable as $key => $value) {
-//  # code...
-//}
+     return view ('busqueda',compact('eventos'));
 
 
-    
-//    dd($edificios);             
+   }
 
-
- return view ('busqueda',compact('eventos'));
-
-}
-
-public function autocomplete(Request $request)
-{
+   public function autocomplete(Request $request)
+   {
     	//$request='Salones';
- return Edificio::where('descE', 'LIKE', '%'.$request->get('buscar').'%')->get();
-    	//dd
-    	// $search = $request->get('term');
-    	//$result=Edificio::where('descE', 'LIKE', '%'.$request->q.'%')->get();
-    	// return response()->json($result);
-}
+     return Edificio::where('descE', 'LIKE', '%'.$request->get('buscar').'%')->get();
+   }
 
-public function resultadoEdi($id){
+   public function resultadoEdi($id){
     $edificio = Edificio::find($id);
 
     $fotos = DB::table('fotos')
@@ -106,17 +78,38 @@ public function resultadoEdi($id){
     ->get();
 
     return view('resultadoE',compact('edificio','fotos','infrae'));
-}
+  }
 
-public function resultado(){
+  public function resultado(){
 
 
     return view('resultado');
-    
-}
+
+  }
+
+    public function autocomplete1(Request $request)
+    {
+        $clients = Edificio::where('nombre',
+            'like',
+            '%' . $request->get('query') . '%'
+        )->get();
+
+        $data = array();
+        foreach ($clients as $client) {
+            array_push($data,
+                ['value' =>
+                    $client->nombre ,
+                    'data' => $client->id . ""]);
+        }
+
+        return response()->json([
+            "query" => "Unit",
+            "suggestions" => $data,
+        ]);
+    }
 
 
-public function resultadoSer($id){
+  public function resultadoSer($id){
     $servicio = Servicio::find($id);
 
     $edificio = Edificio::find($servicio->idEdi);
@@ -126,6 +119,6 @@ public function resultadoSer($id){
     ->get();
 
 
-   return view('resultadoS',compact('edificio','fotos','servicio'));
-}
+    return view('resultadoS',compact('edificio','fotos','servicio'));
+  }
 }

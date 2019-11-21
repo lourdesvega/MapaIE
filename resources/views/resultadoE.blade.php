@@ -38,6 +38,8 @@
 <br>
 <br>
 @endforeach
+
+<a href="/busqueda" class="btn btn-success  btn-sm" role="button" >Volver a eventos</a>
 @endsection
 
 <hr>

@@ -28,6 +28,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('busqueda', 'BusquedaController@search')->name('search');
 Route::get('autocomplete', 'BusquedaController@autocomplete')->name('autocomplete');
 
+Route::get('autocomplete1', 'BusquedaController@autocomplete1')->name('autocomplete1');
+
 
 //Route::get('busquedas','BusquedaController@busquedas')->name('busquedas');
 Route::post('busquedas','BusquedaController@rbusquedas')->name('rbusquedas');
@@ -49,9 +51,9 @@ Auth::routes();
 
 
 Route::resource('usuario', 'UsuarioController');/*->middleware('auth')*/
- 
-Route::resource('evento', 'EventoController');  
 
-Route::put('eliminar/{id}','EventoController@eliminar')->name('evento.eliminar');               /*   
+Route::resource('evento', 'EventoController');
+
+Route::put('eliminar/{id}','EventoController@eliminar')->name('evento.eliminar');               /*
 
                         */
